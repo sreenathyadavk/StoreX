@@ -1,0 +1,28 @@
+<nav th:fragment="navbar" class="navbar">
+    <div class="navbar-container">
+        <a href="/" class="navbar-brand">CloudStorage</a>
+        <div class="navbar-links">
+            <a href="/" class="nav-link">Home</a>
+            <a th:if="${#authorization.expression('isAuthenticated()')}" href="/dashboard"
+                class="nav-link">Dashboard</a>
+
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="theme-toggle">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+
+            <div th:if="${!#authorization.expression('isAuthenticated()')}" class="auth-links">
+                <a href="/login" class="nav-link">Login</a>
+                <a href="/signup" class="button navbar-btn">Sign Up</a>
+            </div>
+
+            <div th:if="${#authorization.expression('isAuthenticated()')}" class="auth-links">
+                <form th:action="@{/logout}" method="post" style="margin: 0;">
+                    <button type="submit" class="button navbar-btn">Logout</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</nav>

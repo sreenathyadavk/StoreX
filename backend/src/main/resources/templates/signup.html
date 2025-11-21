@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Sign Up - Cloud File Storage</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <script th:src="@{/js/main.js}" defer></script>
+</head>
+
+<body>
+    <div th:replace="~{fragments/navbar :: navbar}"></div>
+
+    <div class="container" style="max-width: 400px; margin-top: 2rem;">
+        <div class="header" style="justify-content: center;">
+            <h1>Sign Up</h1>
+        </div>
+        <form th:action="@{/register}" th:object="${user}" method="post">
+            <div>
+                <label for="username">Username</label>
+                <input type="text" id="username" th:field="*{username}" required placeholder="Choose a username"
+                    style="width: 100%; box-sizing: border-box;">
+            </div>
+
+            <div>
+                <label for="password">Password</label>
+                <input type="password" id="password" th:field="*{password}" required placeholder="Choose a password"
+                    style="width: 100%; box-sizing: border-box;">
+            </div>
+
+            <button type="submit">Sign Up</button>
+        </form>
+        <div class="link">
+            <a th:href="@{/login}">Already have an account? Sign in</a>
+        </div>
+    </div>
+</body>
+
+</html>
